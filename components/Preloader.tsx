@@ -43,7 +43,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             <img 
               src="/assets/images/logo.png" 
               alt="Rashid Al Khanzori Logo" 
-              className="w-full h-full object-contain invert mix-blend-screen brightness-150"
+              className="w-full h-full object-contain"
             />
           </motion.div>
 

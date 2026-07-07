@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { key: "contact", href: "#contact" }
 ];
 
-const SERVICES = ["service1", "service2", "service3"];
+const SERVICES = ["service1", "service2", "service3", "service7"];
 const SOCIAL = [{ l:"LinkedIn", h:"#" },{ l:"Instagram", h:"#" },{ l:"Twitter", h:"#" }];
 
 export default function Footer() {
@@ -27,11 +27,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 pb-16 border-b border-stroke">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="relative h-24 md:h-32 w-auto mb-6 flex items-start justify-start">
+            <div className="relative h-28 md:h-40 w-auto mb-6 flex items-start justify-start">
               <img 
                 src="/assets/images/logo.png" 
                 alt="Rashid Al Khanzori Logo" 
-                className="object-contain w-auto h-full opacity-85 hover:opacity-100 transition-opacity invert mix-blend-screen"
+                className="object-contain w-auto h-full opacity-90 hover:opacity-100 transition-opacity rounded-xl"
               />
             </div>
             <p className="text-muted text-sm max-w-xs mb-8">
