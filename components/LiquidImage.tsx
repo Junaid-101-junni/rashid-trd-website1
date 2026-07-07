@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useState } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -92,6 +92,17 @@ function Scene({ img, hover }: { img: string, hover: boolean }) {
 
 export default function LiquidImage({ img, className }: { img: string, className?: string }) {
   const [hover, setHover] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className={`relative w-full h-full overflow-hidden bg-black/20 ${className || ""}`} />
+    );
+  }
 
   return (
     <div 
@@ -102,6 +113,7 @@ export default function LiquidImage({ img, className }: { img: string, className
       <Canvas 
         camera={{ position: [0, 0, 1.2], fov: 45 }} // Use orthographic or perspective
         className="w-full h-full block pointer-events-none"
+        eventSource={typeof window !== 'undefined' ? document.body : undefined}
       >
         <Scene img={img} hover={hover} />
       </Canvas>

@@ -7,7 +7,6 @@ import { ArrowRight, Zap } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import Magnetic from "@/components/Magnetic";
 import { SplitText } from "@/components/Animations";
-import ScrubVideo from "@/components/ScrubVideo";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -144,11 +143,12 @@ export default function HeroSection() {
               transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
               className="w-full h-full relative"
             >
-              <ScrubVideo 
-                src="https://assets.mixkit.co/videos/preview/mixkit-modern-architecture-building-4161-large.mp4" 
-                className="absolute inset-[-10%] w-[120%] h-[120%] z-0" 
+              <motion.div
+                ref={imageRef}
+                style={{ scale, backgroundImage: "url('/assets/images/hero_interior.png')" }}
+                className="absolute inset-[-10%] w-[120%] h-[120%] bg-cover bg-center mix-blend-luminosity opacity-80"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-[#000000]/20 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/40 to-transparent z-10" />
             </motion.div>
 
             {/* Premium Badge Overlay */}

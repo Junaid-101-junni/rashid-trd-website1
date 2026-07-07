@@ -7,8 +7,6 @@ import { MapPin, Calendar, ArrowUpRight, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { RevealUp } from "@/components/Animations";
 
-import LiquidImage from "@/components/LiquidImage";
-
 const PROJECTS = [
   { id:"01", titleKey:"proj1", loc:"loc1", year:"2023", catKey:"filterRes", area:"850 m²", img:"/assets/images/user_villa_night.jpg", colSpan: "lg:col-span-8" },
   { id:"02", titleKey:"proj2", loc:"loc2", year:"2022", catKey:"filterRes", area:"1,200 m²", img:"/assets/images/user_villa_pajero.jpg", colSpan: "lg:col-span-4" },
@@ -70,9 +68,9 @@ function ProjectCard({ p, i }) {
           style={{ y: yPos }}
           className="absolute inset-[-20%] w-[140%] h-[140%]"
         >
-          <LiquidImage 
-            img={p.img} 
-            className="opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-opacity duration-1000" 
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-all duration-[1200ms] ease-[0.22,1,0.36,1] group-hover:scale-105 opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:brightness-110"
+            style={{ backgroundImage:`url(${p.img})` }}
           />
         </motion.div>
         {/* Halftone dot overlay */}

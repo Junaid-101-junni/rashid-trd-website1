@@ -6,7 +6,6 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { SplitText } from "@/components/Animations";
-import LiquidImage from "@/components/LiquidImage";
 
 function Count({ end, sfx }: { end: number; sfx: string }) {
   const [n, set] = useState(0);
@@ -114,14 +113,9 @@ export default function AboutSection() {
             className="relative h-[380px] overflow-hidden rounded-2xl border border-stroke shadow-2xl bg-surface group"
           >
             <motion.div
-              className="absolute inset-[-15%] w-[130%] h-[130%]"
-              style={{ y: imgY }}
-            >
-              <LiquidImage 
-                img="/assets/images/user_engineers.jpg" 
-                className="mix-blend-luminosity opacity-70 group-hover:mix-blend-normal group-hover:opacity-100 transition-opacity duration-1000" 
-              />
-            </motion.div>
+              className="absolute inset-[-15%] w-[130%] h-[130%] bg-cover bg-center mix-blend-luminosity opacity-70 transition-transform duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105 group-hover:mix-blend-normal group-hover:opacity-100"
+              style={{ y: imgY, backgroundImage: "url('/assets/images/user_engineers.jpg')" }}
+            />
             {/* dark overlay to guarantee bottom text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-left rtl:text-right z-20">
