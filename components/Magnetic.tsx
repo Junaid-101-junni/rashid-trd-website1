@@ -30,6 +30,10 @@ export default function Magnetic({ children, strength = 0.3, className = "", sty
 
   const onMouseLeave = () => { rawX.set(0); rawY.set(0); };
 
+  const onMouseEnter = () => {
+    import("@/lib/audio").then(m => m.playTick());
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -37,6 +41,7 @@ export default function Magnetic({ children, strength = 0.3, className = "", sty
       className={className}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
+      onMouseEnter={onMouseEnter}
     >
       {children}
     </motion.div>

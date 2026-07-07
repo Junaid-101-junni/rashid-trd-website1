@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -9,7 +9,9 @@ import CustomCursor from "@/components/CustomCursor";
 import QuickConnectHub from "@/components/QuickConnectHub";
 import AmbientOrbs from "@/components/AmbientOrbs";
 import LoadingScreen from "@/components/LoadingScreen";
+import CursorSpotlight from "@/components/CursorSpotlight";
 import HeroSection from "@/components/Sections/HeroSection";
+import MarqueeStrip from "@/components/MarqueeStrip";
 import AboutSection from "@/components/Sections/AboutSection";
 import ExpertiseSection from "@/components/Sections/ExpertiseSection";
 import ProjectsSection from "@/components/Sections/ProjectsSection";
@@ -26,6 +28,21 @@ export default function Home() {
 
   const handleLoadingComplete = useCallback(() => {
     setIsLoaded(true);
+    import("@/lib/audio").then((m) => m.playWhoosh());
+  }, []);
+
+  useEffect(() => {
+    const unlockAudio = () => {
+      import("@/lib/audio").then((m) => m.initAudio());
+      window.removeEventListener("pointerdown", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+    };
+    window.addEventListener("pointerdown", unlockAudio);
+    window.addEventListener("keydown", unlockAudio);
+    return () => {
+      window.removeEventListener("pointerdown", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+    };
   }, []);
 
   return (
@@ -35,6 +52,7 @@ export default function Home() {
       </AnimatePresence>
 
       <CustomCursor />
+      <CursorSpotlight />
       
       <SmoothScroll>
         {/* @ts-ignore */}
@@ -51,8 +69,8 @@ export default function Home() {
 
           <main className="relative z-10">
             <HeroSection />
+            <MarqueeStrip />
             
-            <div className="section-divider" />
             <AboutSection />
             
             <div className="section-divider" />

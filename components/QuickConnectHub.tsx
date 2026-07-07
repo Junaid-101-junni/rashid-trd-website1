@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Phone, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import Magnetic from "@/components/Magnetic";
 
 export default function QuickConnectHub() {
   const [isOpen, setIsOpen] = useState(false);
@@ -113,50 +114,54 @@ export default function QuickConnectHub() {
 
             {/* Footer */}
             <div className="px-4 pb-4">
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0a0908] text-[#d4af37] text-[8.5px] font-bold tracking-[0.2em] uppercase font-mono border border-[#d4af37]/15 hover:border-[#d4af37]/35 transition-colors"
-              >
-                {language === "en" ? "Open Full Enquiry Form" : "فتح نموذج الاستفسار الكامل"}
-                <ArrowUpRight size={11} />
-              </a>
+              <Magnetic strength={0.15}>
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0a0908] text-[#d4af37] text-[8.5px] font-bold tracking-[0.2em] uppercase font-mono border border-[#d4af37]/15 hover:border-[#d4af37]/35 transition-colors"
+                >
+                  {language === "en" ? "Open Full Enquiry Form" : "فتح نموذج الاستفسار الكامل"}
+                  <ArrowUpRight size={11} />
+                </a>
+              </Magnetic>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* FAB Toggle button */}
-      <motion.button
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative w-14 h-14 rounded-2xl bg-[#0a0908] flex items-center justify-center shadow-2xl border border-[#d4af37]/20 hover:border-[#d4af37]/45 transition-all group"
-        style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,175,55,0.12)" }}
-      >
-        {/* Gold glow */}
-        <motion.span
-          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 rounded-2xl bg-[#d4af37]/10"
-        />
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.22 }}>
-              <X size={20} className="text-[#d4af37]" />
-            </motion.div>
-          ) : (
-            <motion.div key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.22 }}>
-              <MessageSquare size={20} className="text-[#d4af37]" />
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <Magnetic strength={0.4}>
+        <motion.button
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-14 h-14 rounded-2xl bg-[#0a0908] flex items-center justify-center shadow-2xl border border-[#d4af37]/20 hover:border-[#d4af37]/45 transition-all group"
+          style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,175,55,0.12)" }}
+        >
+          {/* Gold glow */}
+          <motion.span
+            animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-2xl bg-[#d4af37]/10"
+          />
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.22 }}>
+                <X size={20} className="text-[#d4af37]" />
+              </motion.div>
+            ) : (
+              <motion.div key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.22 }}>
+                <MessageSquare size={20} className="text-[#d4af37]" />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-        {/* Green online dot */}
-        <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-[#22c55e] border-2 border-[#0a0908]">
-          <span className="absolute inset-0 rounded-full bg-[#22c55e] animate-ping opacity-70" />
-        </span>
-      </motion.button>
+          {/* Green online dot */}
+          <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-[#22c55e] border-2 border-[#0a0908]">
+            <span className="absolute inset-0 rounded-full bg-[#22c55e] animate-ping opacity-70" />
+          </span>
+        </motion.button>
+      </Magnetic>
     </div>
   );
 }

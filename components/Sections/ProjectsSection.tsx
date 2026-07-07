@@ -2,10 +2,12 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Calendar, ArrowUpRight, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { RevealUp } from "@/components/Animations";
+
+import LiquidImage from "@/components/LiquidImage";
 
 const PROJECTS = [
   { id:"01", titleKey:"proj1", loc:"loc1", year:"2023", catKey:"filterRes", area:"850 m²", img:"/assets/images/user_villa_night.jpg", colSpan: "lg:col-span-8" },
@@ -29,6 +31,12 @@ function ProjectCard({ p, i }) {
       y: e.clientY - rect.top,
     });
   };
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+  const yPos = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
     <motion.div
@@ -58,10 +66,15 @@ function ProjectCard({ p, i }) {
 
       {/* Photo inside Bento container */}
       <div className="absolute inset-3 rounded-[1.5rem] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100"
-          style={{ backgroundImage:`url(${p.img})` }}
-        />
+        <motion.div
+          style={{ y: yPos }}
+          className="absolute inset-[-20%] w-[140%] h-[140%]"
+        >
+          <LiquidImage 
+            img={p.img} 
+            className="opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-opacity duration-1000" 
+          />
+        </motion.div>
         {/* Halftone dot overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNykiLz48L3N2Zz4=')] opacity-50 mix-blend-overlay pointer-events-none" />
         {/* Vignette overlay */}

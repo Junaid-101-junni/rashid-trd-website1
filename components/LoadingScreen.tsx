@@ -46,19 +46,19 @@ export default function LoadingScreen({ onComplete }: Props) {
       {phase === "counting" && (
         <motion.div
           key="loader"
-          exit={{ opacity: 0, scale: 1.04, filter: "blur(12px)" }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[9999] flex flex-col overflow-hidden select-none"
+          exit={{ y: "-100vh", opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex flex-col overflow-hidden select-none origin-top"
           style={{ background: "#0a0a0a" }}
         >
           {/* ── Fine grid ── */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none opacity-40"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px)," +
-                "linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)",
-              backgroundSize: "80px 80px",
+                "linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px)," +
+                "linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)",
+              backgroundSize: "60px 60px",
             }}
           />
 
@@ -70,25 +70,13 @@ export default function LoadingScreen({ onComplete }: Props) {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2.5"
             >
-              {/* Logo mark */}
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{
-                  background: "linear-gradient(135deg,#C4A265,#8B6F3E)",
-                  padding: "1.5px",
-                }}
-              >
-                <div
-                  className="w-full h-full rounded-full flex items-center justify-center"
-                  style={{ background: "#0a0a0a" }}
-                >
-                  <span style={{ fontFamily: "'Instrument Serif',serif", fontStyle: "italic", fontSize: "12px", color: "#C4A265" }}>
-                    S
-                  </span>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-br from-[#C4A265] to-[#8B6F3E] p-[1.5px]">
+                <div className="w-full h-full rounded-full flex items-center justify-center bg-[#0a0a0a]">
+                  <span className="font-display italic text-[12px] text-accent">R</span>
                 </div>
               </div>
-              <span style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(128,128,128,0.5)", fontFamily: "'Inter',sans-serif" }}>
-                Studio — 2026
+              <span className="text-[10px] tracking-[0.3em] uppercase text-muted font-mono">
+                Est. 1998
               </span>
             </motion.div>
 
@@ -98,70 +86,71 @@ export default function LoadingScreen({ onComplete }: Props) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="flex items-center gap-1.5"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span style={{ fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(128,128,128,0.3)", fontFamily: "'Inter',sans-serif" }}>
-                Loading experience
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C4A265] animate-pulse" />
+              <span className="text-[9px] tracking-[0.25em] uppercase text-muted/60 font-mono">
+                Initiating sequence
               </span>
             </motion.div>
           </div>
 
-          {/* ── Center: cycling word ── */}
-          <div className="flex-1 flex items-center justify-center">
-            <div className="relative text-center">
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={wordIndex}
-                  initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
-                  exit={{   opacity: 0, y: -28, filter: "blur(8px)" }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  style={{
-                    fontFamily: "'Instrument Serif',serif",
-                    fontStyle: "italic",
-                    fontSize: "clamp(3.5rem, 10vw, 8rem)",
-                    color: "rgba(245,245,245,0.75)",
-                    lineHeight: 1,
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {WORDS[wordIndex]}
-                </motion.p>
-              </AnimatePresence>
-
-              {/* Subtle underline accent */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 h-px w-24 origin-center"
-                style={{ background: "linear-gradient(90deg,transparent,#C4A265,transparent)" }}
-              />
+          {/* ── Center: Cinematic Text ── */}
+          <div className="flex-1 flex flex-col items-center justify-center relative">
+            <div className="relative overflow-hidden px-4">
+              <motion.h1
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display italic text-[clamp(2.5rem,8vw,6rem)] text-transparent uppercase tracking-tight text-center leading-none"
+                style={{
+                  WebkitTextStroke: "1px rgba(196,162,101,0.3)",
+                }}
+              >
+                Rashid Al Khanzori
+              </motion.h1>
+              
+              <motion.h1
+                initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+                animate={{ clipPath: `inset(${100 - count}% 0% 0% 0%)` }}
+                transition={{ duration: 0.1 }}
+                className="font-display italic text-[clamp(2.5rem,8vw,6rem)] text-accent uppercase tracking-tight text-center leading-none absolute top-0 left-4 right-4"
+                style={{
+                  filter: "drop-shadow(0 0 20px rgba(196,162,101,0.4))"
+                }}
+              >
+                Rashid Al Khanzori
+              </motion.h1>
             </div>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="text-muted font-mono text-[10px] uppercase tracking-[0.4em] mt-8"
+            >
+              Trading & Contracting L.L.C
+            </motion.p>
           </div>
 
           {/* ── Bottom: counter + details ── */}
           <div className="relative px-6 pb-6">
-            {/* Horizontal rule */}
-            <div className="mb-5 h-px" style={{ background: "#1c1c1c" }} />
+            <div className="mb-5 h-px bg-white/5" />
 
             <div className="flex items-end justify-between">
-              {/* Left: status text */}
               <div>
-                <p style={{ fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(128,128,128,0.25)", fontFamily: "'Inter',sans-serif", marginBottom: "4px" }}>
-                  Initializing
+                <p className="text-[9px] tracking-[0.3em] uppercase text-muted/50 font-mono mb-2">
+                  System Status
                 </p>
                 <div className="flex items-center gap-2">
-                  {["Design system", "Animations", "Assets"].map((label, i) => (
+                  {["Geometry", "Shaders", "Assets"].map((label, i) => (
                     <span
                       key={i}
-                      className="flex items-center gap-1"
-                      style={{ fontSize: "9px", fontFamily: "'Inter',sans-serif" }}
+                      className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider"
                     >
                       <span
-                        className="w-1 h-1 rounded-full"
-                        style={{ background: count > i * 33 ? "#C4A265" : "#1c1c1c", transition: "background 0.4s" }}
+                        className="w-1 h-1 rounded-full transition-colors duration-400"
+                        style={{ background: count > i * 33 ? "#C4A265" : "rgba(255,255,255,0.1)" }}
                       />
-                      <span style={{ color: count > i * 33 ? "rgba(196,162,101,0.6)" : "rgba(128,128,128,0.2)", transition: "color 0.4s" }}>
+                      <span className="transition-colors duration-400" style={{ color: count > i * 33 ? "rgba(196,162,101,0.8)" : "rgba(255,255,255,0.2)" }}>
                         {label}
                       </span>
                     </span>
@@ -169,33 +158,16 @@ export default function LoadingScreen({ onComplete }: Props) {
                 </div>
               </div>
 
-              {/* Right: giant counter */}
-              <span
-                style={{
-                  fontFamily: "'Instrument Serif',serif",
-                  fontSize: "clamp(4rem, 12vw, 9rem)",
-                  color: "#f5f5f5",
-                  lineHeight: 1,
-                  letterSpacing: "-0.04em",
-                  fontVariantNumeric: "tabular-nums",
-                }}
-              >
-                {String(count).padStart(3, "0")}
-              </span>
+              {/* Giant counter */}
+              <div className="flex items-start">
+                <span className="font-display italic text-[clamp(3rem,10vw,7rem)] text-white leading-none tracking-tighter font-variant-numeric:tabular-nums">
+                  {String(count).padStart(3, "0")}
+                </span>
+                <span className="text-accent text-sm md:text-xl font-mono mt-2 md:mt-4">%</span>
+              </div>
             </div>
           </div>
 
-          {/* ── Progress bar ── */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: "#1c1c1c" }}>
-            <motion.div
-              className="h-full origin-left"
-              style={{
-                scaleX: count / 100,
-                background: "linear-gradient(90deg,#C4A265,#8B6F3E)",
-                boxShadow: "0 0 12px rgba(196,162,101,0.5), 0 0 24px rgba(196,162,101,0.2)",
-              }}
-            />
-          </div>
         </motion.div>
       )}
     </AnimatePresence>

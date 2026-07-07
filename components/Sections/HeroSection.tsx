@@ -6,7 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import Magnetic from "@/components/Magnetic";
-import { StaggeredText } from "@/components/Animations";
+import { SplitText } from "@/components/Animations";
+import ScrubVideo from "@/components/ScrubVideo";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -86,13 +87,13 @@ export default function HeroSection() {
             <h1 className="font-display italic text-[4.5rem] md:text-[7rem] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] tracking-[-0.03em] relative z-10 mix-blend-difference">
               {language === "en" ? (
                 <>
-                  <StaggeredText text="Creating" stagger={0.05} delay={0.1} />
+                  <SplitText text="Creating" stagger={0.03} delay={0.1} splitBy="char" />
                   <br />
                   <span className="text-accent ml-12 md:ml-24">
-                    <StaggeredText text="Spaces" stagger={0.05} delay={0.4} />
+                    <SplitText text="Spaces" stagger={0.03} delay={0.4} splitBy="char" />
                   </span>
                   <br />
-                  <StaggeredText text="That Inspire" stagger={0.05} delay={0.7} />
+                  <SplitText text="That Inspire" stagger={0.03} delay={0.7} splitBy="char" />
                 </>
               ) : (
                 <>
@@ -143,12 +144,11 @@ export default function HeroSection() {
               transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
               className="w-full h-full relative"
             >
-              <motion.div
-                ref={imageRef}
-                style={{ scale, backgroundImage: "url('/assets/images/hero_interior.png')" }}
-                className="absolute inset-[-10%] w-[120%] h-[120%] bg-cover bg-center"
+              <ScrubVideo 
+                src="https://assets.mixkit.co/videos/preview/mixkit-modern-architecture-building-4161-large.mp4" 
+                className="absolute inset-[-10%] w-[120%] h-[120%] z-0" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-[#000000]/20 to-transparent z-10" />
             </motion.div>
 
             {/* Premium Badge Overlay */}

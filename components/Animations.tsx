@@ -33,9 +33,9 @@ export function RevealClip({ children, delay = 0, className = "" }: RevealProps)
   );
 }
 
-interface StaggeredTextProps { text: string; className?: string; delay?: number; stagger?: number; }
-export function StaggeredText({ text, className = "", delay = 0, stagger = 0.03 }: StaggeredTextProps) {
-  const words = text.split(" ");
+interface SplitTextProps { text: string; className?: string; delay?: number; stagger?: number; splitBy?: "word" | "char"; }
+export function SplitText({ text, className = "", delay = 0, stagger = 0.03, splitBy = "word" }: SplitTextProps) {
+  const elements = splitBy === "word" ? text.split(" ") : text.split("");
   
   const container = {
     hidden: { opacity: 0 },
@@ -49,13 +49,13 @@ export function StaggeredText({ text, className = "", delay = 0, stagger = 0.03 
   };
 
   const item = {
-    hidden: { y: "120%", opacity: 0, rotateZ: 2, filter: "blur(4px)" },
+    hidden: { y: "120%", opacity: 0, rotateZ: splitBy === "char" ? 5 : 2, filter: "blur(8px)" },
     show: { 
       y: "0%", 
       opacity: 1, 
       rotateZ: 0, 
       filter: "blur(0px)",
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } 
     }
   };
 
@@ -65,15 +65,16 @@ export function StaggeredText({ text, className = "", delay = 0, stagger = 0.03 
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-40px" }}
-      className={`inline-flex flex-wrap gap-x-[0.25em] overflow-hidden ${className}`}
+      className={`inline-flex flex-wrap overflow-hidden ${className} ${splitBy === "word" ? "gap-x-[0.25em]" : ""}`}
     >
-      {words.map((word, i) => (
+      {elements.map((el, i) => (
         <span key={i} className="inline-block overflow-hidden relative">
           <motion.span
             variants={item}
             className="inline-block"
+            style={{ paddingBottom: "0.1em" }}
           >
-            {word}
+            {el === " " && splitBy === "char" ? "\u00A0" : el}
           </motion.span>
         </span>
       ))}
