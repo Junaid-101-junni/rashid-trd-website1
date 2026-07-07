@@ -31,7 +31,7 @@ export default function Footer() {
               <img 
                 src="/assets/images/logo.png" 
                 alt="Rashid Al Khanzori Logo" 
-                className="object-contain w-auto h-full opacity-85 hover:opacity-100 transition-opacity"
+                className="object-contain w-auto h-full opacity-85 hover:opacity-100 transition-opacity invert mix-blend-screen"
               />
             </div>
             <p className="text-muted text-sm max-w-xs mb-8">
