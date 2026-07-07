@@ -86,13 +86,13 @@ export default function HeroSection() {
             <h1 className="font-display italic text-[4.5rem] md:text-[7rem] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] tracking-[-0.03em] relative z-10 mix-blend-difference">
               {language === "en" ? (
                 <>
-                  <SplitText text="Creating" stagger={0.03} delay={0.1} splitBy="char" />
+                  <span className="whitespace-nowrap"><SplitText text="Creating" stagger={0.03} delay={0.1} splitBy="char" /></span>
                   <br />
-                  <span className="text-accent ml-12 md:ml-24">
+                  <span className="text-accent ml-12 md:ml-24 whitespace-nowrap">
                     <SplitText text="Spaces" stagger={0.03} delay={0.4} splitBy="char" />
                   </span>
                   <br />
-                  <SplitText text="That Inspire" stagger={0.03} delay={0.7} splitBy="char" />
+                  <span className="whitespace-nowrap"><SplitText text="That Inspire" stagger={0.03} delay={0.7} splitBy="char" /></span>
                 </>
               ) : (
                 <>

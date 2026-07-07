@@ -62,15 +62,15 @@ export default function AboutSection() {
           <h2 className="font-display italic text-6xl md:text-[5rem] text-text-primary tracking-tight mb-8 leading-[1.05]">
             {language === "en" ? (
               <>
-                <SplitText text="Building Musandam's Skylines" stagger={0.03} delay={0.1} splitBy="char" /><br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60">
+                <span className="whitespace-nowrap"><SplitText text="Building Musandam's Skylines" stagger={0.03} delay={0.1} splitBy="char" /></span><br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60 whitespace-nowrap">
                   <SplitText text="With Structural Rigor" stagger={0.03} delay={0.4} splitBy="char" />
                 </span>
               </>
             ) : (
               <>
-                <SplitText text="نشكّل آفاق البناء بمسندم" stagger={0.03} delay={0.1} splitBy="char" /><br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60">
+                <span className="whitespace-nowrap"><SplitText text="نشكّل آفاق البناء بمسندم" stagger={0.03} delay={0.1} splitBy="char" /></span><br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60 whitespace-nowrap">
                   <SplitText text="بأساليب هندسية راسخة" stagger={0.03} delay={0.4} splitBy="char" />
                 </span>
               </>
