@@ -69,9 +69,9 @@ export default function AboutSection() {
               </>
             ) : (
               <>
-                <span className="whitespace-nowrap"><SplitText text="نشكّل آفاق البناء بمسندم" stagger={0.03} delay={0.1} splitBy="char" /></span><br />
+                <span className="whitespace-nowrap"><SplitText text="نشكّل آفاق البناء بمسندم" stagger={0.05} delay={0.1} splitBy="word" /></span><br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/60 whitespace-nowrap">
-                  <SplitText text="بأساليب هندسية راسخة" stagger={0.03} delay={0.4} splitBy="char" />
+                  <SplitText text="بأساليب هندسية راسخة" stagger={0.05} delay={0.4} splitBy="word" />
                 </span>
               </>
             )}
