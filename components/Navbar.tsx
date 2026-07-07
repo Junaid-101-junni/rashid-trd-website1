@@ -37,8 +37,10 @@ export default function Navbar() {
         
         {/* LOGO */}
         <div className="pl-3 pr-6 flex items-center gap-4 cursor-pointer group" onClick={() => scrollTo("home")}>
-          <div className="relative w-32 h-14 md:w-48 md:h-20 overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
-             <img src="/assets/images/logo_transparent.png" alt="Logo" className="w-full h-full object-contain" />
+          <div className="relative w-32 h-14 md:w-48 md:h-20 flex items-center justify-center transition-transform group-hover:scale-105">
+             {/* Premium Glowing Aura for legibility */}
+             <div className="absolute inset-0 bg-white/60 blur-[20px] rounded-full scale-[1.8] z-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <img src="/assets/images/logo_transparent.png" alt="Logo" className="w-full h-full object-contain relative z-10 drop-shadow-xl" />
           </div>
           <div className="flex flex-col justify-center">
             <span className="text-text-primary font-bold tracking-widest text-[12px] md:text-[14px] uppercase font-mono group-hover:text-accent transition-colors">

@@ -40,10 +40,12 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             transition={{ delay: 0.15, duration: 0.7 }}
             className="mb-16 relative h-20 w-auto flex items-center justify-center"
           >
+            {/* Premium Glowing Aura */}
+            <div className="absolute inset-0 bg-white/50 blur-[30px] rounded-full scale-[1.5] z-0"></div>
             <img 
               src="/assets/images/logo.png" 
               alt="Rashid Al Khanzori Logo" 
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
             />
           </motion.div>
 

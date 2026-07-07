@@ -27,11 +27,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 pb-16 border-b border-stroke">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="relative h-28 md:h-40 w-auto mb-6 flex items-start justify-start">
+            <div className="relative h-28 md:h-40 w-auto mb-6 flex items-start justify-start group">
+              {/* Premium Glowing Aura */}
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-40 h-40 bg-white/40 blur-[35px] rounded-full z-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img 
                 src="/assets/images/logo.png" 
                 alt="Rashid Al Khanzori Logo" 
-                className="object-contain w-auto h-full opacity-90 hover:opacity-100 transition-opacity rounded-xl"
+                className="object-contain w-auto h-full relative z-10 drop-shadow-xl"
               />
             </div>
             <p className="text-muted text-sm max-w-xs mb-8">
