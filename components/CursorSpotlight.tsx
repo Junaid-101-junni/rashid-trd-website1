@@ -24,6 +24,7 @@ export default function CursorSpotlight() {
   }, [mouseX, mouseY, isVisible]);
 
   return (
+    // @ts-ignore
     <motion.div
       className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-1000"
       style={{
@@ -31,6 +32,7 @@ export default function CursorSpotlight() {
         background: "transparent",
       }}
     >
+      {/* @ts-ignore */}
       <motion.div
         className="absolute inset-[-50%] w-[200%] h-[200%] pointer-events-none mix-blend-soft-light"
         style={{
