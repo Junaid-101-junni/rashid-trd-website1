@@ -83,7 +83,7 @@ export default function HeroSection() {
               </motion.div>
             </div>
 
-            <h1 className="font-display italic text-[4.5rem] md:text-[7rem] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] tracking-[-0.03em] relative z-10 mix-blend-difference">
+            <h1 className="font-display italic text-[clamp(3rem,8vw,8.5rem)] leading-[0.85] tracking-[-0.03em] relative z-10 mix-blend-difference">
               {language === "en" ? (
                 <>
                   <span className="whitespace-nowrap"><SplitText text="Creating" stagger={0.03} delay={0.1} splitBy="char" /></span>
@@ -151,22 +151,6 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/40 to-transparent z-10" />
             </motion.div>
 
-            {/* Premium Badge Overlay */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.5, duration: 1 }}
-              className="absolute bottom-8 left-8 glass-premium backdrop-blur-xl border border-white/10 rounded-2xl p-5 w-64 shadow-2xl"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[9px] uppercase tracking-[0.2em] text-accent font-bold font-mono">Premium Portfolio</span>
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              </div>
-              <p className="text-[#F2F2F2] font-display italic text-2xl leading-none mb-1">
-                {language === "en" ? "Khasab Royal" : "قصر الخصب الملكي"}
-              </p>
-              <p className="text-neutral-400 text-[10px] font-mono uppercase tracking-widest">Musandam</p>
-            </motion.div>
           </motion.div>
           
         </div>

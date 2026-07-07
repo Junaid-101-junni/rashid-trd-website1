@@ -59,7 +59,7 @@ export default function AboutSection() {
             </span>
           </div>
 
-          <h2 className="font-display italic text-6xl md:text-[5rem] text-text-primary tracking-tight mb-8 leading-[1.05]">
+          <h2 className="font-display italic text-[clamp(2.5rem,5vw,5rem)] text-text-primary tracking-tight mb-8 leading-[1.05]">
             {language === "en" ? (
               <>
                 <span className="whitespace-nowrap"><SplitText text="Building Musandam's Skylines" stagger={0.03} delay={0.1} splitBy="char" /></span><br />
@@ -116,18 +116,6 @@ export default function AboutSection() {
               className="absolute inset-[-15%] w-[130%] h-[130%] bg-cover bg-center mix-blend-luminosity opacity-70 transition-transform duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105 group-hover:mix-blend-normal group-hover:opacity-100"
               style={{ y: imgY, backgroundImage: "url('/assets/images/user_engineers.jpg')" }}
             />
-            {/* dark overlay to guarantee bottom text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent z-10" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-left rtl:text-right z-20">
-              <div>
-                <p className="text-accent text-[10px] uppercase tracking-widest font-mono font-bold mb-1">{language === "en" ? "Active Engineering" : "النشاط الهندسي"}</p>
-                <p className="text-text-primary font-bold">{language === "en" ? "Khasab Fjord Structural Shell" : "هيكل فورد الخصب الإنشائي"}</p>
-                <p className="text-muted text-xs mt-0.5 font-mono">{language === "en" ? "Khasab Heights, Musandam" : "ارتفاعات خصب، مسندم"}</p>
-              </div>
-              <div className="bg-surface/50 backdrop-blur-md border border-stroke rounded-full px-4 py-1.5 text-[9px] tracking-widest uppercase text-accent font-mono font-bold z-20">
-                2024
-              </div>
-            </div>
           </motion.div>
 
           {/* Stats Cards */}
