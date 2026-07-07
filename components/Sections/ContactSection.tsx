@@ -48,16 +48,16 @@ export default function ContactSection() {
     {
       role:  t("chairman"),
       name:  "Rashid Al Khanzori",
-      num:   "+968 9893 9598",
-      wa:    "https://wa.me/96898939598",
-      tel:   "tel:+96898939598",
+      num:   "00968 99205961",
+      wa:    "https://wa.me/96899205961",
+      tel:   "tel:0096899205961",
     },
     {
       role:  t("md"),
       name:  "Mohammad Saddique",
-      num:   "+968 9920 5961",
-      wa:    "https://wa.me/96899205961",
-      tel:   "tel:+96899205961",
+      num:   "00968 98939598",
+      wa:    "https://wa.me/96898939598",
+      tel:   "tel:0096898939598",
     },
   ];
 

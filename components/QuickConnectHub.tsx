@@ -16,17 +16,17 @@ export default function QuickConnectHub() {
     {
       role: t("chairman"),
       name: "Rashid Al Khanzori",
-      wa: "https://wa.me/96898939598",
-      tel: "tel:+96898939598",
-      num: "+968 9893 9598",
+      wa: "https://wa.me/96899205961",
+      tel: "tel:0096899205961",
+      num: "00968 99205961",
       email: "mailto:sadiali@gmail.com",
     },
     {
       role: t("md"),
       name: "Mohammad Saddique",
-      wa: "https://wa.me/96899205961",
-      tel: "tel:+96899205961",
-      num: "+968 9920 5961",
+      wa: "https://wa.me/96898939598",
+      tel: "tel:0096898939598",
+      num: "00968 98939598",
       email: "mailto:sadiali@gmail.com",
     },
   ];
